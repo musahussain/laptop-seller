@@ -1,0 +1,26 @@
+.notfound-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    margin: 0 auto;
+}
+.notfound-container img{
+    width: 100%;
+}
+@media only screen and (max-width: 603px) {
+    .notfound-container{
+        width: 500px;
+    }
+}
+@media only screen and (max-width: 503px) {
+    .notfound-container{
+        width: 450px;
+    }
+}
+
+@media only screen and (max-wdith: 403px) {
+    .notfound-container{
+        width: 350px;
+    }   
+}

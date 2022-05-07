@@ -1,0 +1,58 @@
+.signup{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+.signup > h1{
+    font-size: 3rem;
+    color: rgb(222, 72, 57);
+}
+.signup input{
+    display: block;
+    padding: 5px;
+    width: 300px;
+    height: 45px;
+    border-radius: 10px;
+    border: 2px solid lightgray;
+    font-size: 1.1rem;
+}
+.signup input[type=submit]{
+    background-color: rgb(222, 72, 57);
+    color: white;
+    border: none;
+    height: 50px;
+    cursor: pointer;
+}
+.or div{
+    width: 150px;
+    background-color: rgb(63, 62, 62);
+    height: 2px;
+}
+.or{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+.or > p{
+    margin: 0 10px;
+    font-size: 1.4rem;
+}
+.google-btn{
+    border: none;
+    padding: 10px 40px;
+    color: rgb(255, 255, 255);
+    font-size: 1.3rem;
+    border-radius: 10px;
+    background-color: rgb(63, 62, 62);
+    margin-top: 30px;
+    cursor: pointer;
+}
+.google-sign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
