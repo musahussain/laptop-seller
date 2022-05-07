@@ -1,11 +1,14 @@
-import React from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import React, { useState, useRef } from 'react';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../../firebase.init';
 import Loading from '../../SharedComponent/Loading/Loading';
 import './Login.css';
 
 const Login = () => {
+    const emailRef = useRef('');
     const [
         signInWithEmailAndPassword,
         user,
@@ -14,6 +17,9 @@ const Login = () => {
       ] = useSignInWithEmailAndPassword(auth);
 
       const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+      const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
+        auth
+      );
 
       const navigate = useNavigate();
 
@@ -23,8 +29,19 @@ const Login = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         signInWithEmailAndPassword(email, password)
-
+       
         console.log(email, password)
+    }
+
+    const resetPassword = async () => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Sent email');
+        }
+        else{
+            toast('please enter your email address');
+        }
     }
 
     if(loading || googleLoading) {
@@ -42,12 +59,13 @@ const Login = () => {
                 <p style={{color: 'red'}}>{error?.message }</p>
                 <p style={{color: 'red'}}>{googleError?.message}</p>
                 <form onSubmit={handleSignIn}>
-                    <input required type="email" name='email' id='email' placeholder='Enter Your Email' />
+                    <input ref={emailRef} required type="email" name='email' id='email' placeholder='Enter Your Email' />
                     <input required type="password" name="password" id="password" placeholder='Enter Your Password' />
                     <input className='submit-btn' type="submit" value="Login" />
                 </form>
 
                 <p>Don't have an account <Link to="/signup">Sign Up</Link></p>
+                <p>Forgot Password <button onClick={resetPassword}>Reset Password</button></p>
             </div>
 
             <div className="or">
@@ -58,6 +76,7 @@ const Login = () => {
 
             <div className="google-signup">
                 <button onClick={() => signInWithGoogle()} className='signup-google-btn'> <img src="https://i.postimg.cc/pVf7Lh8X/google-1.png" alt="google logo" /> Sign In with Google</button>
+                <ToastContainer />
             </div>
         </div>
     );

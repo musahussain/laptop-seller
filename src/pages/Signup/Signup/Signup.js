@@ -1,6 +1,6 @@
 import React from 'react';
 import auth from '../../../firebase.init';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import './Signup.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../../SharedComponent/Loading/Loading';
@@ -13,17 +13,17 @@ const Signup = () => {
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
       const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+      const [sendEmailVerification, sending, verificationError] = useSendEmailVerification(auth);
 
       const navigate = useNavigate();
 
-    const handleSignUp = event => {
+    const handleSignUp = async event => {
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
         createUserWithEmailAndPassword(email, password);
-
-
+        await sendEmailVerification();
         console.log(name, email, password);
     }
 
@@ -50,6 +50,7 @@ const Signup = () => {
                 </form>
 
                 <p>Already Registered <Link to="/login">Login</Link></p>
+                
             </div>
 
             <div className="or">
