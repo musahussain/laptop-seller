@@ -48,7 +48,7 @@ const Login = () => {
 
     if(loading || googleLoading) {
         return <Loading></Loading>
-    // }hello
+    }
 
     if(user || googleUser) {
         navigate('/');
