@@ -1,79 +1,35 @@
-import React, { useState } from 'react';
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
-import auth from '../../../firebase.init';
+import React from 'react';
 import './Signup.css';
 
 const Signup = () => {
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-      ] = useCreateUserWithEmailAndPassword(auth);
-
-      const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-
-      const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-
-      const [sendEmailVerification, sending, verificationError] = useSendEmailVerification(auth);
-
-      const [name, setName] = useState('');
-      const [email, setEmail] = useState('');
-      const [password, setPassword] = useState('');
-
-      const navigate = useNavigate();
-      
-      const verificationEmail = async () => {
-        await sendEmailVerification();
-      }
-
-
-      const handleSignUp = async (event) => {
+    const handleSignUp = event => {
         event.preventDefault();
-        await createUserWithEmailAndPassword(email, password);
-        await updateProfile({ displayName: name });
-        verificationEmail();
-      }
-
-      const signInGoogle = () => {
-            signInWithGoogle();
-      }
-
-      if(loading || googleLoading || sending || updating) {
-          return <h1 style={{textAlign: "center"}}>Loading...</h1>
-      }
-
-      if(user || googleUser) {
-          navigate('/');
-      }
-      
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        console.log(name, email, password)
+    }
 
     return (
-        <div>
+        <div className='signup-container'>
             <div className="signup">
-                <h1>Signup</h1>
+                <h1>Sign Up</h1>
                 <form onSubmit={handleSignUp}>
-                    <input onChange={(event) => setName(event.target.value)}  type="text" value={name} placeholder='Your Name' />
-                    <br />
-                    <input required onChange={(event) => setEmail(event.target.value)} type="email" value={email} placeholder='Your Email Address' />
-                    <br />
-                    <input required onChange={(event) => setPassword(event.target.value)} value={password} placeholder='Your Password' type="password" name="password" id="user-password" />
-                    <br />
-                    <p style={{color: "red"}}>{error?.message}{googleError?.message}{verificationError?.message}</p>
-                    <input type="submit" value="Create Account" />
+                    <input required type="text" name="name" id="name" placeholder=' Enter Your Name' />
+                    <input required type="email" name='email' id='email' placeholder='Enter Your Email' />
+                    <input required type="password" name="password" id="password" placeholder='Enter Your Password' />
+                    <input className='submit-btn' type="submit" value="Create Account" />
                 </form>
-                <p>Already Have an Account <Link to="/login">Sign In</Link></p>
+            </div>
 
-                <div className="or">
-                    <div></div>
-                    <p>Or</p>
-                    <div></div>
-                </div>
+            <div className="or">
+                <div className='or-element'></div>
+                <div>Or</div>
+                <div className='or-element'></div>
+            </div>
 
-                <div className="google-sign">
-                    <button onClick={signInGoogle} className='google-btn'>Google Sign In</button>
-                </div>
+            <div className="google-signup">
+                <button className='signup-google-btn'> <img src="https://i.postimg.cc/pVf7Lh8X/google-1.png" alt="google logo" /> Sign Up with Google</button>
             </div>
         </div>
     );

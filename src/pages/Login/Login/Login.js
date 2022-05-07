@@ -1,95 +1,37 @@
-import React, { useState } from "react";
-
+import React from 'react';
+import './Login.css';
 
 const Login = () => {
-  
-
-    c
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-
-  const navigate = useNavigate();
-
-  const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
-
-  const handleSignIn = (event) => {
-    event.preventDefault();
-    signInWithEmailAndPassword(email, password);
-  };
-
-
-  
-  const signInGoogle = () => {
-        signInWithGoogle();
-        
-  }
-
-  const resetPassword = async () => {
-    if (email) {
-        await sendPasswordResetEmail(email);
-        toast('Sent email');
+    const handleSignIn = event => {
+        event.preventDefault();
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        console.log(name, email, password)
     }
-    else{
-        toast('please enter your email address');
-    }
-}
 
-  if (loading || googleLoading || sending) {
-    return <h1 style={{textAlign: "center"}}>Loading...</h1>
-}
+    return (
+        <div className='signup-container'>
+            <div className="signup signin">
+                <h1>Sign In</h1>
+                <form onSubmit={handleSignIn}>
+                    <input required type="email" name='email' id='email' placeholder='Enter Your Email' />
+                    <input required type="password" name="password" id="password" placeholder='Enter Your Password' />
+                    <input className='submit-btn' type="submit" value="Create Account" />
+                </form>
+            </div>
 
-if (user || googleUser) {
-    navigate(from, { replace: true });
-}
+            <div className="or">
+                <div className='or-element'></div>
+                <div>Or</div>
+                <div className='or-element'></div>
+            </div>
 
-  return (
-    <div>
-      <div className="signup">
-        <h1>Sign In</h1>
-        <form onSubmit={handleSignIn}>
-          <input required
-            onChange={(event) => setEmail(event.target.value)}
-            type="email"
-            value={email}
-            placeholder="Your Email Address"
-          />
-          <br />
-          <input required
-            onChange={(event) => setPassword(event.target.value)}
-            value={password}
-            placeholder="Your Password"
-            type="password"
-            name="password"
-            id="user-password"
-          />
-          <br />
-          <p style={{ color: "red" }}>{error?.message}{googleError?.message}</p>
-          <input type="submit" value="Login" />
-        </form>
-        <p>
-          Don't have an Account <Link to="/signup">Sign Up</Link>
-        </p>
-        <p>Forgot Password <button style={{border: "none", textDecoration: "underline", backgroundColor: "white", cursor: "pointer"}} onClick={resetPassword}>Reset Password</button></p>
-      </div>
-
-      <div className="or">
-        <div></div>
-        <p>Or</p>
-        <div></div>
-      </div>
-
-      <div className="google-sign">
-        <button onClick={signInGoogle} className="google-btn">
-          Google Sign In
-        </button>
-      </div>
-      <ToastContainer></ToastContainer>
-    </div>
-  );
+            <div className="google-signup">
+                <button className='signup-google-btn'> <img src="https://i.postimg.cc/pVf7Lh8X/google-1.png" alt="google logo" /> Sign In with Google</button>
+            </div>
+        </div>
+    );
 };
 
 export default Login;
