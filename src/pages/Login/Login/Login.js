@@ -49,7 +49,7 @@ const Login = () => {
     if(loading || googleLoading) {
         return <Loading></Loading>
     }
-
+    
     if(user || googleUser) {
         navigate('/');
     }
