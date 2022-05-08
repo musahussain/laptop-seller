@@ -5,7 +5,7 @@ import './Inventory.css';
 const Inventory = () => {
     const {productId} = useParams();
     const [product, setProduct] = useState({});
-    const [decreasedQuantity, setDecreasedQuantity] = useState(0);
+    const [decreasedQuantity, setDecreasedQuantity] = useState(10);
 
     useEffect( () => {
         const url = `http://localhost:5000/product/${productId}`;
@@ -15,35 +15,35 @@ const Inventory = () => {
 
         const quanti = parseInt(product.quantity);
         setDecreasedQuantity(quanti);
-    }, [decreasedQuantity]);
+    }, []);
     
 
     const {name, img, description, price, supplier, quantity} = product;
     
     console.log(decreasedQuantity);
-    const decreaseQuantityChange = (id) => {
-        const newQuantity = parseInt(decreasedQuantity) - parseInt(1);
-        setDecreasedQuantity(newQuantity);
+    const decreaseQuantityChange = async(id) => {
+        const newQuantity = decreasedQuantity - 1;
+        await setDecreasedQuantity(newQuantity);
 
         console.log(decreasedQuantity, id);
 
         const updatedQuantity = {
-            quantity: decreasedQuantity
+            quantity: newQuantity
         }
 
-        const url = `http://localhost:5000/inventory/${id}`;
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updatedQuantity)
-        })
-        .then(res => res.json())
-        .then(data =>{
-            console.log('success', data);
-            alert('Updated successfully!');
-        });
+        // const url = `http://localhost:5000/inventory/${id}`;
+        // fetch(url, {
+        //     method: 'PUT',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(updatedQuantity)
+        // })
+        // .then(res => res.json())
+        // .then(data =>{
+        //     console.log('success', data);
+        //     alert('Updated successfully!');
+        // });
     }
 
     

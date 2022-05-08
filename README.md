@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Tronic
+
+This is laptop warehouse project. In this website you will find various types of laptops. You can manage them. You can login and log out, You can sign in with your google account.
+
+* React firebase hooks were used
+* React router was used
+* Firebase authentication was used
+* Node.js and Express.js 
+* MongoDB 
+
 ## Available Scripts
 
 In the project directory, you can run:
