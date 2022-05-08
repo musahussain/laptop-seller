@@ -20,7 +20,7 @@ const Header = () => {
         <div className="site-title">
           <Link to="/">
             <h1>
-              <span>I</span>tem Stocker
+              <span>T</span>ronic
             </h1>
           </Link>
         </div>
@@ -46,10 +46,14 @@ const Header = () => {
           }
         </nav>
 
-        <div onClick={showResponsiveMenu} className="mobile-menu">
+        <div onClick={showResponsiveMenu} className={`mobile-menu ${showMenu ? 'inactive-menu' : 'active-menu'}`}>
             <div></div>
             <div></div>
             <div></div>
+        </div>
+
+        <div onClick={showResponsiveMenu} className={`close-mobile-menu ${showMenu ? 'active' : 'inactive'}`}>
+          X
         </div>
       </header>
     </div>

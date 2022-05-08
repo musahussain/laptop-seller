@@ -33,9 +33,13 @@
 .mobile-menu{
     display: none;
 }
+.close-mobile-menu{
+    display: none;
+}
 @media only screen and (max-width: 798px) {
     nav{
         display: none;
+        /* color: rgb(117, 130, 131); */
     }
     .mobile-menu{
         display: flex;
@@ -69,5 +73,23 @@
         background-color: rgb(224, 59, 139);
         margin-bottom: 30px;
         margin-top: 15px;
+    }
+    .close-mobile-menu{
+        display: none;
+        font-size: 2rem;
+        color: rgb(224, 59, 139);
+        cursor: pointer;
+    }
+    .active{
+        display: block;
+    }
+    .inactive{
+        display: none;
+    }
+    .active-menu{
+        display: flex;
+    }
+    .inactive-menu{
+        display: none;
     }
 }

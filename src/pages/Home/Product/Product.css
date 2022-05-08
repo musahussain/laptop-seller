@@ -1,0 +1,42 @@
+.product img{
+    width: 90%;
+    margin: 15px 15px 10px 15px;
+}
+.product{
+    width: 350px;
+    border: 1px solid rgb(224, 59, 139);
+    grid-gap: 30px;
+    margin-bottom: 45px;
+    border-radius: 12px;
+    position: relative;
+    height: 900px;
+}
+.product p{
+    margin: 5px 15px 2px 15px;
+    font-size: 1.1rem;
+    color: rgb(117, 130, 131);
+}
+.product h2{
+    margin: 7px 15px 7px 15px;
+    color: rgb(224, 59, 139);
+}
+.product p span{
+    font-weight: 700;
+}
+.manage-btn{
+    width: 100%;
+    border-radius: 12px;
+    position: absolute;
+    bottom: 0;
+    cursor: pointer;
+}
+@media only screen and (max-width: 500px) {
+    .product{
+        width: 95%;
+    }
+}
+@media only screen and (max-width: 845px) {
+    .product{
+        width: 95%;
+    }
+}
