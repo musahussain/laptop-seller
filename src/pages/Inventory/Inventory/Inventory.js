@@ -13,18 +13,16 @@ const Inventory = () => {
         .then(res => res.json())
         .then(data => setProduct(data));
 
-        const quanti = product.quantity;
+        const quanti = parseInt(product.quantity);
         setDecreasedQuantity(quanti);
-    }, []);
+    }, [decreasedQuantity]);
     
 
     const {name, img, description, price, supplier, quantity} = product;
     
-
-    console.log('quantity', quantity);
-    
+    console.log(decreasedQuantity);
     const decreaseQuantityChange = (id) => {
-        const newQuantity = decreasedQuantity - 1;
+        const newQuantity = parseInt(decreasedQuantity) - parseInt(1);
         setDecreasedQuantity(newQuantity);
 
         console.log(decreasedQuantity, id);
@@ -34,18 +32,18 @@ const Inventory = () => {
         }
 
         const url = `http://localhost:5000/inventory/${id}`;
-        // fetch(url, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(updatedQuantity)
-        // })
-        // .then(res => res.json())
-        // .then(data =>{
-        //     console.log('success', data);
-        //     alert('Updated successfully!');
-        // });
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedQuantity)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log('success', data);
+            alert('Updated successfully!');
+        });
     }
 
     
