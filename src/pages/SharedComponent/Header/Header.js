@@ -4,15 +4,20 @@ import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
 import "./Header.css";
+import Loading from "../Loading/Loading";
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
-
   const [showMenu, setShowMenu] = useState(false);
-
   const showResponsiveMenu = () => {
         setShowMenu(!showMenu);
   }
+
+  if(loading) {
+    return <Loading></Loading>
+  }
+
+
 
   return (
     <div>

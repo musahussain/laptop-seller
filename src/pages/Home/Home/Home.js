@@ -1,5 +1,6 @@
 import React from 'react';
-import Inventory from '../Inventory/Inventory';
+import Products from '../Products/Products';
+import Inventory from '../Products/Products';
 import './Home.css';
 
 const Home = () => {
@@ -19,8 +20,8 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="inventory-container">
-                <Inventory></Inventory>
+            <div id='inventory' className="inventory-container">
+                <Products></Products>
             </div>
         </div>
     );

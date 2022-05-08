@@ -1,0 +1,41 @@
+.single-product-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.product-manage{
+    width: 55%;
+    border: 1px solid rgb(224, 59, 139);
+    border-radius: 5px;
+    color: rgb(117, 130, 131);
+}
+
+
+
+
+@media only screen and (max-width: 845px) {
+    .product-manage{
+        width: 65%;
+    }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .product-manage{
+        width: 75%;
+    }
+}
+.product-manage img{
+    width: 95%;
+    margin: 40px 45px 40px 5px;
+}
+.product-manage span{
+    font-weight: 800;
+}
+.product-manage h2{
+    margin: 30px;
+}
+.product-manage p{
+    margin: 30px;
+}
