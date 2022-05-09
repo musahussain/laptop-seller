@@ -6,6 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This is laptop warehouse project. In this website you will find various types of laptops. You can manage them. You can login and log out, You can sign in with your google account.
 
+[Live Site](https://warehouse-887f5.web.app/).
+
+
 * React firebase hooks were used
 * React router was used
 * Firebase authentication was used
