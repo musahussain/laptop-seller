@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .product-manage{
     width: 55%;
@@ -38,4 +39,23 @@
 }
 .product-manage p{
     margin: 30px;
+}
+.restock-product{
+    border: 1px solid rgb(224, 59, 139);
+    margin-top: 45px;
+    padding: 30px;
+    border-radius: 5px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.restock-product h2{
+    color: rgb(117, 130, 131);
+}
+.restock-product input[type=number] {
+    padding: 12px;
+    border-radius: 5px;
+    margin: 12px 3px 12px 45px;
 }
