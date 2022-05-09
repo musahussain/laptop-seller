@@ -1,0 +1,30 @@
+.blog-container{
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+    margin: 0 auto;
+    margin-top: 45px;
+}
+
+
+.article{
+    width: 350px;
+}
+
+
+
+@media only screen and (max-width: 771px) {
+
+
+
+
+    .blog-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    
+    .article{
+        width: 95%;
+    }
+}
