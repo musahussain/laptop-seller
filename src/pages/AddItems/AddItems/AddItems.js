@@ -21,7 +21,7 @@ const AddItems = () => {
             img: imgUrl
         }
 
-        const url = `http://localhost:5000/product`;
+        const url = `https://evening-gorge-19412.herokuapp.com/product`;
         fetch(url, {
             method: "POST",
             headers: {
