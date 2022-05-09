@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useProducts from '../../../hooks/useProducts';
 import InventoryItem from '../InventoryItem/InventoryItem';
 import './ManageItems.css';
@@ -9,7 +10,7 @@ const ManageItems = () => {
     const deleteItem = id => {
         const agree = window.confirm("Are you sure you want to delete?");
         if(agree) {
-            console.log("deleting item", id);
+            
             const url = `https://evening-gorge-19412.herokuapp.com/product/${id}`;
             fetch(url, {
                 method: "DELETE"
@@ -17,7 +18,7 @@ const ManageItems = () => {
             .then(res => res.json())
             .then(data => {
                 if(data.deletedCount > 0) {
-                    console.log("deleted");
+                    
                     const remainingProducts = products.filter(pd => pd._id !== id);
                     setProducts(remainingProducts);
                 }
@@ -34,6 +35,10 @@ const ManageItems = () => {
                     products.map(pd => <InventoryItem key={pd._id} deletePd={deleteItem} pd={pd}></InventoryItem>)
                 }
                 </div>
+
+                <div className="manage-inventory-link">
+                <Link className='btn' to="/additems">Add New Items</Link>
+            </div>
             </div>
         </div>
     );

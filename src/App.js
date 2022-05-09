@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AddItems from "./pages/AddItems/AddItems/AddItems";
 import Blog from "./pages/Blog/Blog/Blog";
 import Home from "./pages/Home/Home/Home";
 import Inventory from "./pages/Inventory/Inventory/Inventory";
@@ -29,6 +30,9 @@ function App() {
         </RequireAuth>}></Route>
         <Route path="/manageitems" element={<RequireAuth>
           <ManageItems></ManageItems>
+        </RequireAuth>}></Route>
+        <Route path="/additems" element={<RequireAuth>
+          <AddItems></AddItems>
         </RequireAuth>}></Route>
       </Routes>
       <Footer></Footer>

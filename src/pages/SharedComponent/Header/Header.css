@@ -63,6 +63,7 @@
         background-color: rgb(224, 59, 139);
         position: absolute;
         top: 100px;
+        z-index: 100;
     }
     .header .mobile-nav a{
         color: white;
