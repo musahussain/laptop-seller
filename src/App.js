@@ -4,6 +4,7 @@ import Blog from "./pages/Blog/Blog/Blog";
 import Home from "./pages/Home/Home/Home";
 import Inventory from "./pages/Inventory/Inventory/Inventory";
 import Login from "./pages/Login/Login/Login";
+import ManageItems from "./pages/ManageItems/ManageItems/ManageItems";
 import Footer from "./pages/SharedComponent/Footer/Footer";
 import Header from "./pages/SharedComponent/Header/Header";
 import NotFound from "./pages/SharedComponent/NotFound/NotFound";
@@ -25,6 +26,9 @@ function App() {
         <Route path="*" element={<NotFound></NotFound>}></Route>
         <Route path="/inventory/:productId" element={<RequireAuth>
           <Inventory></Inventory>
+        </RequireAuth>}></Route>
+        <Route path="/manageitems" element={<RequireAuth>
+          <ManageItems></ManageItems>
         </RequireAuth>}></Route>
       </Routes>
       <Footer></Footer>

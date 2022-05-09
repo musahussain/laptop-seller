@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './Inventory.css';
 
 const Inventory = () => {
@@ -92,6 +92,7 @@ const Inventory = () => {
                 <p><small><span>Supplier:</span> {supplier}</small></p>
                 <p><span>Quantity:</span> {decreasedQuantity}</p>
                 <button onClick={() => decreaseQuantityChange(productId)} style={{cursor: 'pointer', margin: '30px'}} className='btn'>Deleivered</button>
+                <Link className='btn' to="/manageitems">Manage Inventories</Link>
             </div>
 
             <div className="restock-product">
@@ -100,6 +101,8 @@ const Inventory = () => {
                     <input required type="number" name="increaseStock" id="increase-stock" placeholder='Enter number to restock' />
                     <input style={{cursor: 'pointer', margin: '0 0 0 75px'}} className='btn' type="submit" value="Restock" />
                 </form>
+
+                
             </div>
          </div>
     );

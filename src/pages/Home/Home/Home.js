@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Products from '../Products/Products';
 import './Home.css';
 
@@ -21,6 +22,10 @@ const Home = () => {
 
             <div id='inventory' className="inventory-container">
                 <Products></Products>
+            </div>
+
+            <div className="manage-inventory-link">
+                <Link className='btn' to="/manageitems">Manage Inventories</Link>
             </div>
         </div>
     );

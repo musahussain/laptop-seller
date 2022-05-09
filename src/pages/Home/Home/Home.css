@@ -56,3 +56,12 @@
         width: 100%;
     }
 }
+.manage-inventory-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 45px;
+}
+.manage-inventory-link a{
+    background-color: rgb(117, 130, 131);
+}

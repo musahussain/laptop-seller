@@ -1,0 +1,9 @@
+.inventory-item{
+    border: 1px solid rgb(117, 130, 131);
+}
+.inventory-item h2{
+    color: rgb(117, 130, 131);
+}
+.inventory-item .delete-btn{
+    background-color: rgb(117, 130, 131);
+}
