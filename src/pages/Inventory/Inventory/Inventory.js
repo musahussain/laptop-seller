@@ -8,7 +8,7 @@ const Inventory = () => {
     const [decreasedQuantity, setDecreasedQuantity] = useState(10);
 
     useEffect( () => {
-        const url = `http://localhost:5000/product/${productId}`;
+        const url = `http://https://evening-gorge-19412.herokuapp.com/product/${productId}`;
         fetch(url)
         .then(res => res.json())
         .then(data => setProduct(data));
@@ -31,7 +31,7 @@ const Inventory = () => {
             quantity: newQuantity
         }
 
-        // const url = `http://localhost:5000/inventory/${id}`;
+        // const url = `http://https://evening-gorge-19412.herokuapp.com/inventory/${id}`;
         // fetch(url, {
         //     method: 'PUT',
         //     headers: {
